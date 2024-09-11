@@ -20,13 +20,21 @@ input {
 
 button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+}
+
+#filters {
+    margin-top: 20px;
+}
+
+#filters button {
+    margin: 0 5px;
 }
 
 li {
@@ -40,15 +48,15 @@ li {
 }
 
 li span {
-    flex-grow: 1; /* Faz o texto ocupar o máximo de espaço à esquerda */
-    text-align: left; /* Alinha o texto à esquerda */
+    flex-grow: 1;
+    text-align: left;
 }
 
 li button {
     margin-left: 10px;
 }
 
-button.completed {
+button.complete {
     background-color: green;
     color: white;
     border: none;

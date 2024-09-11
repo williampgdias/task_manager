@@ -3,6 +3,11 @@ const inputTask = document.getElementById('new-task');
 const btnAdd = document.getElementById('add-task');
 const taskList = document.getElementById('task-list');
 
+// Get filter buttons
+const filterAll = document.getElementById('filter-all');
+const filterCompleted = document.getElementById('filter-completed');
+const filterPending = document.getElementById('filter-pending');
+
 // Function to load tasks from localStorage
 function loadTasks() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -48,7 +53,7 @@ function createTaskElement(text, completed = false) {
     // Mark tas as complete
     btnComplete.addEventListener('click', function () {
         taskSpan.classList.toggle('completed');
-        saveTasks(); // Save affter toggling
+        saveTasks(); // Save after toggling
     });
 
     // Remove Task
@@ -77,6 +82,28 @@ function addTask() {
         saveTasks(); // Save after adding
     }
 }
+
+// Filter to filter tasks
+function filterTasks(filter) {
+    const tasks = taskList.querySelectorAll('li');
+    tasks.forEach((task) => {
+        const isCompleted = task
+            .querySelector('span')
+            .classList.contains('completed');
+        if (filter === 'all') {
+            task.style.display = 'flex';
+        } else if (filter === 'completed') {
+            task.style.display = isCompleted ? 'flex' : 'none';
+        } else if (filter === 'pending') {
+            task.style.display = !isCompleted ? 'flex' : 'none';
+        }
+    });
+}
+
+// Add event listeners for filter buttons
+filterAll.addEventListener('click', () => filterTasks('all'));
+filterCompleted.addEventListener('click', () => filterTasks('completed'));
+filterPending.addEventListener('click', () => filterTasks('pending'));
 
 // Add task when clicking the "Add" button
 btnAdd.addEventListener('click', addTask);
