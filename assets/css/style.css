@@ -36,6 +36,24 @@ li {
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+li span {
+    flex-grow: 1; /* Faz o texto ocupar o máximo de espaço à esquerda */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+li button {
+    margin-left: 10px;
+}
+
+button.completed {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 button.remove {
@@ -44,4 +62,9 @@ button.remove {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+span.completed {
+    text-decoration: line-through;
+    color: #999;
 }
