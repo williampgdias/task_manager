@@ -2,26 +2,59 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     padding: 20px;
     text-align: center;
 }
 
 input {
-    margin-top: 20px;
     padding: 10px;
     font-size: 16px;
     width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input#new-task {
+    font-family: inherit;
+    margin-top: 40px;
+    margin-right: 20px;
+    width: 40%;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.3rem;
+    padding: 5px 15px;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+button#add-task {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: green;
+    color: white;
 }
 
 button {
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 ul {
@@ -30,21 +63,32 @@ ul {
 }
 
 #filters {
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 #filters button {
     margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#filters button:hover {
+    background-color: #0056b3;
 }
 
 li {
     background-color: #fff;
     padding: 10px;
-    margin-top: 10px;
+    margin: 20px auto;
+    max-width: 65%;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 li span {
@@ -57,19 +101,18 @@ li button {
 }
 
 button.complete {
-    background-color: green;
+    background-color: #28a745;
     color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
 }
 
 button.remove {
-    background-color: red;
+    background-color: #dc3545;
     color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+}
+
+button.edit {
+    background-color: #007bff;
+    color: white;
 }
 
 span.completed {
