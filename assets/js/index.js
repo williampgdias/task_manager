@@ -8,6 +8,19 @@ const filterAll = document.getElementById('filter-all');
 const filterCompleted = document.getElementById('filter-completed');
 const filterPending = document.getElementById('filter-pending');
 
+// Reusable Functions
+function createElement(newElement, text, newClass) {
+    const element = document.createElement(newElement);
+    element.textContent = text;
+    element.classList.add(newClass);
+
+    return element;
+}
+
+function appendButtons(variable01, variable02) {
+    variable01.appendChild(variable02);
+}
+
 // Function to load tasks from localStorage
 function loadTasks() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -41,14 +54,8 @@ function createTaskElement(text, completed = false) {
 
     // Create a div to hold the buttons
     const btnContainer = document.createElement('div');
-
-    const btnComplete = document.createElement('button');
-    btnComplete.textContent = 'Complete';
-    btnComplete.classList.add('complete');
-
-    const btnRemove = document.createElement('button');
-    btnRemove.textContent = 'Remove';
-    btnRemove.classList.add('remove');
+    const btnComplete = createElement('button', 'Complete', 'complete');
+    const btnRemove = createElement('button', 'Remove', 'remove');
 
     // Mark tas as complete
     btnComplete.addEventListener('click', function () {
@@ -63,13 +70,13 @@ function createTaskElement(text, completed = false) {
     });
 
     // Append buttons to the button container
-    btnContainer.appendChild(btnComplete);
-    btnContainer.appendChild(btnRemove);
+    appendButtons(btnContainer, btnComplete);
+    appendButtons(btnContainer, btnRemove);
 
     // Append the task text and the button container to the task item
-    newTask.appendChild(taskSpan);
-    newTask.appendChild(btnContainer);
-    taskList.appendChild(newTask);
+    appendButtons(newTask, taskSpan);
+    appendButtons(newTask, btnContainer);
+    appendButtons(taskList, newTask);
 }
 
 // Function to add a new task
