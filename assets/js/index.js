@@ -90,27 +90,32 @@ function addTask() {
     }
 }
 
-// Filter to filter tasks
+// Filter Functions
+const filterFunctions = {
+    all: () => true,
+    completed: (task) =>
+        task.querySelector('span').classList.contains('completed'),
+    pending: (task) =>
+        !task.querySelector('span').classList.contains('completed'),
+};
+
+// Function to filter tasks
 function filterTasks(filter) {
     const tasks = taskList.querySelectorAll('li');
     tasks.forEach((task) => {
-        const isCompleted = task
-            .querySelector('span')
-            .classList.contains('completed');
-        if (filter === 'all') {
-            task.style.display = 'flex';
-        } else if (filter === 'completed') {
-            task.style.display = isCompleted ? 'flex' : 'none';
-        } else if (filter === 'pending') {
-            task.style.display = !isCompleted ? 'flex' : 'none';
-        }
+        task.style.display = filterFunctions[filter](task) ? 'flex' : 'none';
     });
 }
 
+// Add event listeners to a filter button
+function addFilterEventListener(button, filter) {
+    button.addEventListener('click', () => filterTasks(filter));
+}
+
 // Add event listeners for filter buttons
-filterAll.addEventListener('click', () => filterTasks('all'));
-filterCompleted.addEventListener('click', () => filterTasks('completed'));
-filterPending.addEventListener('click', () => filterTasks('pending'));
+addFilterEventListener(filterAll, 'all');
+addFilterEventListener(filterCompleted, 'completed');
+addFilterEventListener(filterPending, 'pending');
 
 // Add task when clicking the "Add" button
 btnAdd.addEventListener('click', addTask);
