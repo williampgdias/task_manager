@@ -6,11 +6,121 @@
 }
 
 body {
-    background-color: #f4f4f4;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
 }
 
+.todolist {
+    width: 100%;
+    max-width: 600px;
+}
+
+.todolist header {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 15px;
+    background-color: #de3f53;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.wrapper-list ul.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper-list ul.list li {
+    position: relative;
+    background-color: #262e4c;
+    border-bottom: 1px solid #1c2340;
+    color: #b1b2c9;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    transition: background-color 300ms ease;
+}
+
+.wrapper-list ul.list li:hover {
+    background-color: #323b5c;
+}
+
+.wrapper-list ul.list li:hover button.remove {
+    opacity: 1;
+}
+
+.wrapper-list ul.list .check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #404a6e;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+}
+
+.wrapper-list ul.list .check:hover {
+    background-color: #171d37;
+}
+
+.wrapper-list ul.list .check.completed::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.wrapper-list button.remove {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    outline: none;
+    background-color: red;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.wrapper-list button.remove:after {
+    content: 'x';
+    color: #fff;
+    display: block;
+}
+
+.todolist footer {
+    background-color: #171d37;
+}
+
+.todolist footer input {
+    background-color: #171d37;
+    border: none;
+    outline: none;
+    width: 90%;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+/* 
 input {
     padding: 10px;
     font-size: 16px;
@@ -118,4 +228,4 @@ button.edit {
 span.completed {
     text-decoration: line-through;
     color: #999;
-}
+} */

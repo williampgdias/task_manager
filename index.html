@@ -15,19 +15,18 @@
 </head>
 
 <body>
-    <h1>Task Manager</h1>
 
-    <div id="filters">
-        <button id="filter-all">All</button>
-        <button id="filter-completed">Completed</button>
-        <button id="filter-pending">Pending</button>
+    <div class="todolist">
+        <header>Task Manager</header>
+
+        <section class="wrapper-list">
+            <ul id="list" class="list"></ul>
+        </section>
+
+        <footer>
+            <input type="text" id="inputTask" placeholder="Enter your task">
+        </footer>
     </div>
-
-    <ul id="task-list"></ul>
-
-    <input type="text" id="new-task" placeholder="Enter your task">
-    <button id="add-task">Add</button>
-
 
 
     <script type="module" src="assets/js/index.js"></script>
