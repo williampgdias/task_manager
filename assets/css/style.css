@@ -31,12 +31,31 @@ body {
 
 .todolist {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
 }
 
 .todolist header {
     color: #fff;
     font-size: 1.3rem;
+}
+
+#filter button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #262e4c;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 400ms ease;
+    border: 2px solid #de3f53;
+}
+
+#filter button:hover {
+    border: 2px solid #262e4c;
+    background-color: #de3f53;
+    color: #262e4c;
+    font-weight: bold;
 }
 
 .wrapper-list ul.list {
@@ -61,6 +80,10 @@ body {
 }
 
 .wrapper-list ul.list li:hover button.remove {
+    opacity: 1;
+}
+
+.wrapper-list ul.list li:hover button.edit {
     opacity: 1;
 }
 
@@ -104,6 +127,29 @@ body {
     cursor: pointer;
     opacity: 0;
     transition: opacity 300ms ease;
+}
+
+.wrapper-list button.edit {
+    position: absolute;
+    right: 60px;
+    border: none;
+    outline: none;
+    transition: opacity 300ms ease;
+    border: 2px solid #171d37;
+    border-radius: 5px;
+    background-color: #de3f53;
+    color: #fff;
+    width: 45px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0;
+}
+
+.wrapper-list button.edit:hover {
+    background-color: #404a6e;
+    color: #fff;
+    font-weight: bold;
 }
 
 .wrapper-list button.remove:after {

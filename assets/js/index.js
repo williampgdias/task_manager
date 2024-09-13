@@ -60,10 +60,31 @@ document.addEventListener('DOMContentLoaded', function () {
         const removeButton = document.createElement('button');
         removeButton.classList.add('remove');
 
+        // Add an edit button
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.classList.add('edit');
+
         // Remove Task
         removeButton.addEventListener('click', function () {
             taskList.removeChild(newTask);
             saveTasksToLocalStorage();
+        });
+
+        // Edit Task
+        editButton.addEventListener('click', function () {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = taskLabel.textContent;
+            newTask.replaceChild(input, taskLabel);
+
+            input.focus();
+
+            input.addEventListener('blur', function () {
+                taskLabel.textContent = this.value;
+                newTask.replaceChild(taskLabel, this);
+                saveTasksToLocalStorage();
+            });
         });
 
         // Mark task as completed
@@ -85,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newTask.appendChild(checkDiv);
         newTask.appendChild(taskLabel);
         newTask.appendChild(removeButton);
+        newTask.appendChild(editButton);
 
         // Append the new task to the task list
         taskList.appendChild(newTask);
