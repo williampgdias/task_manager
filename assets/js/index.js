@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const taskList = document.getElementById('list');
 
     // Function to create a new task element
-    function createTaskElement(text) {
+    function createTaskElement(text, completed = false) {
         const newTask = document.createElement('li');
 
         const checkDiv = document.createElement('div');
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Remove Task
         removeButton.addEventListener('click', function () {
             taskList.removeChild(newTask);
+            saveTasksToLocalStorage();
         });
 
         // Mark task as completed
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 newTask.style.backgroundColor = '';
                 checkDiv.style.backgroundColor = '';
             }
+            saveTasksToLocalStorage();
         });
 
         // Append elements to the new task
@@ -43,6 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Append the new task to the task list
         taskList.appendChild(newTask);
+
+        if (completed) {
+            taskLabel.classList.add('completed');
+            checkDiv.classList.add('completed');
+            newTask.style.backgroundColor = '#323b5c';
+            checkDiv.style.backgroundColor = '#171d37';
+        }
     }
 
     // Function to add a new task
@@ -52,8 +61,33 @@ document.addEventListener('DOMContentLoaded', function () {
         if (taskText !== '') {
             createTaskElement(taskText);
             inputTask.value = ''; // Clear input field
+            saveTasksToLocalStorage();
         }
     }
+
+    // Function to save tasks to localStorage
+    function saveTasksToLocalStorage() {
+        const tasks = Array.from(taskList.children).map((li) => {
+            return {
+                text: li.querySelector('label').textContent,
+                completed: li
+                    .querySelector('label')
+                    .classList.contains('completed'),
+            };
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    // Function to load tasks from localStorage
+    function loadTasksFromLocalStorage() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.forEach((task) => {
+            createTaskElement(task.text, task.completed);
+        });
+    }
+
+    // Load tasks from localStorage
+    loadTasksFromLocalStorage();
 
     // Add task when pressing Enter key
     inputTask.addEventListener('keypress', function (event) {
