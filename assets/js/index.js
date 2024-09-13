@@ -3,6 +3,49 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputTask = document.getElementById('inputTask');
     const taskList = document.getElementById('list');
 
+    // Get filter buttons
+    const allButton = document.getElementById('all');
+    const ongoingButton = document.getElementById('ongoing');
+    const completedButton = document.getElementById('completed');
+
+    // Filter all tasks
+    allButton.addEventListener('click', function () {
+        const tasks = taskList.children;
+        for (let i = 0; i < tasks.length; i++) {
+            tasks[i].style.display = '';
+        }
+    });
+
+    // Filter ongoing tasks
+    ongoingButton.addEventListener('click', function () {
+        const tasks = taskList.children;
+        for (let i = 0; i < tasks.length; i++) {
+            if (
+                tasks[i].querySelector('.check').classList.contains('completed')
+            ) {
+                tasks[i].style.display = 'none';
+            } else {
+                tasks[i].style.display = '';
+            }
+        }
+    });
+
+    // Filter completed tasks
+    completedButton.addEventListener('click', function () {
+        const tasks = taskList.children;
+        for (let i = 0; i < tasks.length; i++) {
+            if (
+                !tasks[i]
+                    .querySelector('.check')
+                    .classList.contains('completed')
+            ) {
+                tasks[i].style.display = 'none';
+            } else {
+                tasks[i].style.display = '';
+            }
+        }
+    });
+
     // Function to create a new task element
     function createTaskElement(text, completed = false) {
         const newTask = document.createElement('li');

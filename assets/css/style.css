@@ -14,16 +14,27 @@ body {
     background-color: #121212;
 }
 
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 15px;
+    background-color: #de3f53;
+}
+
+#filter {
+    display: flex;
+    gap: 10px;
+}
+
 .todolist {
     width: 100%;
     max-width: 600px;
 }
 
 .todolist header {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    padding: 15px;
-    background-color: #de3f53;
     color: #fff;
     font-size: 1.3rem;
 }
