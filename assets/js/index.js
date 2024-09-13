@@ -32,10 +32,36 @@ document.addEventListener('DOMContentLoaded', function () {
         taskLabel.textContent = text;
         taskLabel.classList.add('task');
         const removeButton = document.createElement('button');
+        removeButton.textContent = 'Delete';
         removeButton.classList.add('remove');
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
         editButton.classList.add('edit');
+
+        // Add move up and move down buttons
+        const moveDownButton = document.createElement('button');
+        moveDownButton.textContent = 'Move Down';
+        moveDownButton.classList.add('move-down');
+
+        const moveUpButton = document.createElement('button');
+        moveUpButton.textContent = 'Move Up';
+        moveUpButton.classList.add('move-up');
+
+        // Move task up
+        // Move task down
+        moveDownButton.addEventListener('click', () => {
+            if (newTask.nextElementSibling) {
+                taskList.insertBefore(newTask.nextElementSibling, newTask);
+                saveTasksToLocalStorage();
+            }
+        });
+
+        moveUpButton.addEventListener('click', () => {
+            if (newTask.previousElementSibling) {
+                taskList.insertBefore(newTask, newTask.previousElementSibling);
+                saveTasksToLocalStorage();
+            }
+        });
 
         removeButton.addEventListener('click', () => {
             taskList.removeChild(newTask);
@@ -63,7 +89,14 @@ document.addEventListener('DOMContentLoaded', function () {
             saveTasksToLocalStorage();
         });
 
-        newTask.append(checkDiv, taskLabel, removeButton, editButton);
+        newTask.append(
+            checkDiv,
+            taskLabel,
+            removeButton,
+            editButton,
+            moveUpButton,
+            moveDownButton
+        );
         taskList.appendChild(newTask);
 
         if (completed) {
