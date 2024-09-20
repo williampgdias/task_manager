@@ -31,7 +31,7 @@ body {
 
 .todolist {
     width: 100%;
-    max-width: 700px;
+    max-width: 850px;
 }
 
 .todolist header {
@@ -75,12 +75,18 @@ body {
     transition: background-color 300ms ease;
 }
 
+.task {
+    color: #fff;
+}
+
 .wrapper-list ul.list li:hover {
     background-color: #323b5c;
 }
 
 .wrapper-list ul.list li:hover button.remove,
-.wrapper-list ul.list li:hover button.edit {
+.wrapper-list ul.list li:hover button.edit,
+.wrapper-list ul.list li:hover button.move-up,
+.wrapper-list ul.list li:hover button.move-down {
     opacity: 1;
 }
 
@@ -116,14 +122,13 @@ body {
 .move-up,
 .move-down {
     position: absolute;
-    top: 20px;
     right: 20px;
     border: none;
     outline: none;
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
-    /* opacity: 0; */
+    opacity: 0;
     transition: opacity 350ms ease;
 }
 
@@ -153,7 +158,6 @@ body {
 
 .move-up {
     border: 1px solid green;
-    /* right: 135px; */
     right: 232px;
     background-color: transparent;
     color: green;
@@ -190,27 +194,3 @@ body {
 .completed {
     text-decoration: line-through;
 }
-
-/* .move-up,
-.move-down {
-    position: absolute;
-    right: 100px;
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 2px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.move-up:hover,
-.move-down:hover {
-    background-color: #45a049;
-    color: white;
-} */
