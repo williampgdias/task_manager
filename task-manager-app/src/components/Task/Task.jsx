@@ -1,14 +1,7 @@
 import React from 'react';
 import styles from './Task.module.css';
 
-const Task = ({
-    task,
-    toggleComplete,
-    removeTask,
-    editTask,
-    moveUp,
-    moveDown,
-}) => {
+const Task = ({ task, toggleComplete, removeTask, editTask }) => {
     return (
         <li className={styles.taskItem}>
             <div

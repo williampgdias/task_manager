@@ -12,14 +12,21 @@ const App = () => {
 
     // Download tasks from the localStorage
     useEffect(() => {
-        const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        const savedTasks = getSavedTasks();
         setTasks(savedTasks);
     }, []);
 
     // Save tasks to the localStorage
     useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        if (tasks.length > 0) {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
     }, [tasks]);
+
+    const getSavedTasks = () => {
+        const savedTasks = localStorage.getItem('tasks');
+        return savedTasks ? JSON.parse(savedTasks) : [];
+    };
 
     // Function to add a new task
     const addTask = () => {
