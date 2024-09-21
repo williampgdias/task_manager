@@ -1,0 +1,84 @@
+.taskItem {
+    position: relative;
+    background-color: #262e4c;
+    border-bottom: 1px solid #1c2340;
+    color: #b1b2c9;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    transition: background-color 300ms ease;
+}
+
+.taskItem:hover {
+    background-color: #323b5c;
+}
+
+.check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #404a6e;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+}
+
+.check.completed::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.task {
+    color: #fff;
+    flex-grow: 1;
+}
+
+.task.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+button {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 350ms ease;
+}
+
+.taskItem:hover button {
+    opacity: 1;
+}
+
+.edit {
+    margin-right: 10px;
+    background-color: transparent;
+    border: 1px solid #999;
+    color: #999;
+}
+
+.edit:hover {
+    background-color: #999;
+    color: #000;
+}
+
+.remove {
+    background-color: transparent;
+    border: 1px solid red;
+    color: red;
+}
+
+.remove:hover {
+    background-color: red;
+    color: #fff;
+}
